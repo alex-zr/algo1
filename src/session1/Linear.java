@@ -19,4 +19,9 @@ public class Linear implements FunctionCalculator {
     private long function(int x) {
         return x;
     }
+
+    @Override
+    public String toString() {
+        return "Linear";
+    }
 }

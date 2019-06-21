@@ -9,6 +9,9 @@ public class FunctionComparator {
         functions[0] = linear;
 //        functions[1] = constant;
 
+        // TODO add all functions to array
+        // TODO sort functions array by ordinates sum
+        // TODO print functions in order by complexity
         for (FunctionCalculator function : functions) {
             System.out.println(function.sumFunction());
         }
