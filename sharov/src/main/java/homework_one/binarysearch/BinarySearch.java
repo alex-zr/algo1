@@ -1,4 +1,4 @@
-package homework1.binarysearch;
+package homework_one.binarysearch;
 
 public class BinarySearch {
   public int search(int element, int[] array) {
