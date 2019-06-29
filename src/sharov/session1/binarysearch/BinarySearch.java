@@ -1,4 +1,4 @@
-package homework_one.binarysearch;
+package src.sharov.session1.binarysearch;
 
 public class BinarySearch {
   public int search(int element, int[] array) {
