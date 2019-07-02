@@ -19,6 +19,10 @@ public class VectorList {
         vector[length++] = el;
     }
 
+    public void remove(int el) {
+        // TODO
+    }
+
     @Override
     public String toString() {
         return Arrays.toString(vector);

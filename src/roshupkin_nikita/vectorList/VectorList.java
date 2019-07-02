@@ -21,7 +21,8 @@ public class VectorList {
         vector[length ++]= element;
     }
     public void remove(int index) {
-        System.arraycopy(vector, index+1, vector, index, length-1);
+        System.arraycopy(vector, index+1, vector, index, length - 1);
+        length--;
 
     }
 
