@@ -10,11 +10,12 @@ public class LinkList {
     }
 
     Node head = null;
-    int count = 0;
+    int length = 0;
 
     public int get(int index) {
         return 0;
     }
+
     public void addHead(int el) {
         final Node newNode = new Node(el, null);
         if (head == null) {
