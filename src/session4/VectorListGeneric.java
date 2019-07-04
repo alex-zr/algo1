@@ -89,7 +89,17 @@ public class VectorListGeneric<E> implements List<E> {
     @Override
     public Iterator<E> iterator() {
         // TODO
-        return null;
+        return new Iterator<E>() {
+            @Override
+            public boolean hasNext() {
+                return false;
+            }
+
+            @Override
+            public E next() {
+                return null;
+            }
+        };
     }
 
     @Override
