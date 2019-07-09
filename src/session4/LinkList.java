@@ -9,8 +9,8 @@ public class LinkList {
         @Override public String toString() {return String.valueOf(value);}
     }
 
-    Node head = null;
-    int length = 0;
+    private Node head = null;
+    private int length = 0;
 
     public int get(int index) {
 
@@ -32,7 +32,7 @@ public class LinkList {
         if (head == null) {
             head = newNode;
         } else {
-            // TODO addTail to tail
+            // TODO add to tail
             Node nextEl = head;
             while (nextEl.next != null) {
                 nextEl = nextEl.next;

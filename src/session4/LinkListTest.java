@@ -3,12 +3,12 @@ package session4;
 public class LinkListTest {
     public static void main(String[] args) {
         LinkList list = new LinkList();
-//        list.addTail(1);
-//        list.addTail(2);
-//        list.addTail(3);
-//        list.addTail(4);
-//        list.addTail(5);
-//        list.addTail(6);
+//        list.add(1);
+//        list.add(2);
+//        list.add(3);
+//        list.add(4);
+//        list.add(5);
+//        list.add(6);
 
         list.addHead(1);
         list.addHead(2);
