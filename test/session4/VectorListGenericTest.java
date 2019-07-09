@@ -6,11 +6,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class VectorListGenericTest {
-    private VectorListGeneric module;
+    private VectorListGeneric1 module;
 
     @Before
     public void setUp() {
-        module = new VectorListGeneric();
+        module = new VectorListGeneric1();
     }
 
     @Test
