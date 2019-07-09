@@ -1,20 +1,25 @@
-package session4;
+package roshupkin_nikita.linkList;
 
 public class LinkList {
     private class Node {
         int value;
         Node next;
-        public Node(int value, Node next) { this.value = value;this.next = next; }
+        public Node(int value,Node next) { this.value = value;this.next = next; }
         public void setNext(Node next) { this.next = next;}
         @Override public String toString() {return String.valueOf(value);}
     }
 
     Node head = null;
-    int length = 0;
+
 
     public int get(int index) {
-
-        return 0;
+        int indexCounter=0;
+        Node next = head;
+        while (indexCounter != index){
+            indexCounter++;
+            next = next.next;
+        }
+        return next.value;
     }
 
     public void addHead(int el) {
@@ -22,8 +27,8 @@ public class LinkList {
         if (head == null) {
             head = newNode;
         } else {
-           newNode.next = head;
-           head = newNode;
+            newNode.next = head;
+            head = newNode;
         }
     }
 
@@ -32,7 +37,6 @@ public class LinkList {
         if (head == null) {
             head = newNode;
         } else {
-            // TODO addTail to tail
             Node nextEl = head;
             while (nextEl.next != null) {
                 nextEl = nextEl.next;
@@ -52,5 +56,6 @@ public class LinkList {
         }
         return stringBuilder.toString();
     }
+
 
 }

@@ -50,9 +50,9 @@ public class VectorList<E> implements List<E> {
     @Override
     public boolean remove(Object o) {
         int counter=0;
-        while (vector[counter] != o || counter < length){
+        while (!o.equals(vector[counter]) || counter < length){
             counter++;
-            if (vector[counter] == o) {
+            if (o.equals(vector[counter])) {
                 System.arraycopy(vector, counter+1, vector, counter, length - counter );
                 return true;
             }
@@ -63,9 +63,9 @@ public class VectorList<E> implements List<E> {
     @Override
     public int indexOf(Object o) {
         int count =0;
-        while (vector[count] != o || count < length) {
+        while (!o.equals(vector[count])  || count < length) {
             count++;
-            if (vector[count] == o){
+            if (o.equals(vector[count])){
                 return count;
             }
         }
@@ -78,8 +78,8 @@ public class VectorList<E> implements List<E> {
         int lastIndex = 0;
         while (count < length) {
             count++;
-            if (vector[count] == o){
-                count = lastIndex;
+            if (o.equals(vector[count])){
+                 lastIndex = count;
             }
             return lastIndex;
         }
@@ -119,7 +119,7 @@ public class VectorList<E> implements List<E> {
         int counter =0;
         while (counter < length) {
             counter++;
-           if (vector[counter] == o) {
+           if (o.equals(vector[counter]) ) {
                return true;
            }
         }
