@@ -23,6 +23,7 @@ public class LinkedListRecurTest {
     public void testAddSuccess() {
         unit.add(1);
         unit.add(2);
-        assertEquals("1->2", unit.toString());
+        unit.add(3);
+        assertEquals("1->2->3", unit.toString());
     }
 }

@@ -1,7 +1,5 @@
 package session6;
 
-import session4.LinkList;
-
 public class LinkedListRecur {
     private class Node {
         int value;
@@ -30,11 +28,19 @@ public class LinkedListRecur {
     }
 
     public void add(int el) {
-
+        add(el, head);
     }
 
     private void add(int el, Node node) {
-
+        if (head == null) {
+            head = new Node(el, null);
+            return;
+        }
+        if (node.next == null) {
+            node.next = new Node(el, null);
+            return;
+        }
+        add(el, node.next);
     }
 
     @Override
