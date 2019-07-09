@@ -2,10 +2,7 @@ package session4;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class VectorListGenericTest {
-
+public class LinkListTest {
     @Test
     public void get() {
 
