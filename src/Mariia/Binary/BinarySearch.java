@@ -1,4 +1,4 @@
-package Mariia.Binary;
+package Mariia.binary;
 
 import java.util.Arrays;
 

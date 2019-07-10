@@ -1,4 +1,4 @@
-package Mariia.MergeSort;
+package Mariia.mergeSort;
 
 import java.util.Arrays;
 

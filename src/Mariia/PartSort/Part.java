@@ -1,4 +1,4 @@
-package Mariia.PartSort;
+package Mariia.partSort;
 
 import java.util.Arrays;
 

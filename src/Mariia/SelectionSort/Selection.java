@@ -1,4 +1,4 @@
-package Mariia.SelectionSort;
+package Mariia.selectionSort;
 
 import java.util.Arrays;
 
