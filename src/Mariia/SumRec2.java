@@ -2,8 +2,8 @@ package Mariia;
 
 public class SumRec2 {
     public static void main(String[] args) {
-        new SumRec2().numbers(6);
-        System.out.println(new SumRec2().sumRec(6));
+        new SumRec2().numbers(8);
+        System.out.println(new SumRec2().sumRec(8));
     }
 
     public void numbers(int n) {
