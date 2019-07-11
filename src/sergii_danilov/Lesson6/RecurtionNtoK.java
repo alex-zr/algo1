@@ -13,7 +13,7 @@ public class RecurtionNtoK {
             return;
         }else{
             System.out.println(n);
-            print(n + 1, k);
+      //      print(n + 1);
         }
     }
 
