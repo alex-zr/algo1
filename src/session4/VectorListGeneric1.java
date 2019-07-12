@@ -6,11 +6,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class VectorListGeneric<E> implements List<E> {
+public class VectorListGeneric1<E> implements List<E> {
     private E[] vector; // основной массив
     public static final int SIZE = 16; // размер массива
     private int length = 0; // виртуальная длинна
-    public VectorListGeneric() {
+    public VectorListGeneric1() {
         this.vector = (E[]) new Object[SIZE]; // создание реального массива
     }
     public E get(int index) {

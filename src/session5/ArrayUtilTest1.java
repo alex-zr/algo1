@@ -1,8 +1,8 @@
 package session5;
 
-public class ArrayUtilTest {
+public class ArrayUtilTest1 {
     public static void main(String[] args) {
-        final ArrayUtilTest driver = new ArrayUtilTest();
+        final ArrayUtilTest1 driver = new ArrayUtilTest1();
         driver.testSumSuccess();
         driver.testSumSingle();
         driver.testSumEmpty();

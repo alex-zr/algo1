@@ -1,6 +1,6 @@
 package session4;
 
-public class LinkListTest {
+public class LinkListTest1 {
     public static void main(String[] args) {
         LinkList list = new LinkList();
 //        list.add(1);

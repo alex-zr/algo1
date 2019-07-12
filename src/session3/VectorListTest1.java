@@ -1,23 +1,8 @@
-package session4;
+package session3;
 
-import session3.VectorList;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-
-public class VectorListGenericTest {
+public class VectorListTest1 {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>(Arrays.asList(1,2,3));
-        list.add(4);
-        Iterator<Integer> iterator = list.iterator();
-        while(iterator.hasNext()) {
-            System.out.println(iterator.next());
-            list.add(5); // concurrent
-        }
-
-        VectorListGeneric<Integer> vectorList = new VectorListGeneric<>();
+        VectorList vectorList = new VectorList();
         vectorList.add(1);
         vectorList.add(2);
         vectorList.add(2);
