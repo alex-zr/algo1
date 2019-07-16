@@ -1,6 +1,5 @@
 package roshupkin_nikita.vectorList;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -51,11 +50,11 @@ public class VectorList<E> implements List<E> {
     public boolean remove(Object o) {
         int counter=0;
         while (!o.equals(vector[counter]) || counter < length){
-            counter++;
             if (o.equals(vector[counter])) {
                 System.arraycopy(vector, counter+1, vector, counter, length - counter );
                 return true;
             }
+            counter++;
         }
         return false;
     }
@@ -64,10 +63,10 @@ public class VectorList<E> implements List<E> {
     public int indexOf(Object o) {
         int count =0;
         while (!o.equals(vector[count])  || count < length) {
-            count++;
             if (o.equals(vector[count])){
                 return count;
             }
+            count++;
         }
         return -1;
     }
@@ -212,16 +211,25 @@ public class VectorList<E> implements List<E> {
 
     @Override
     public void clear() {
-        E[] clearVector = (E[]) new Object[0];
-        vector = clearVector;
+       System.arraycopy(vector,0,vector,length-1, length);
         length = 0;
     }
 
     @Override
     public String toString() {
-        E[] vectorS = (E[]) new Object[length];
-        System.arraycopy(vector,0,vectorS,0,length);
-        return Arrays.toString(vectorS);
+        StringBuilder stringBuilder = new StringBuilder();
+        int index = 0;
+        stringBuilder.append("[");
+        while (index < size()) {
+            stringBuilder.append(vector[index]);
+            if (index == length-1){
+               break;
+            }
+            stringBuilder.append(",");
+            index++;
+        }
+        stringBuilder.append("]");
+        return stringBuilder.toString();
     }
     private void ensureCapacity() {
         if (length >= vector.length) {

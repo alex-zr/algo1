@@ -1,9 +1,7 @@
 package roshupkin_nikita.countSort;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 public class CountSort {
@@ -14,23 +12,29 @@ public class CountSort {
     }
     public static int[] countSort(int[] vector){
         Map<Integer, Integer> map = new TreeMap<>();
-        int count=0;
-        int quantity =1;
-        int tmp = 0;
-        while (count < vector.length) {
+        int index = 0;
+        int number = 0;
+        while (index < vector.length) {
 
-            if (!map.containsKey(vector[count])) {
-                map.put(vector[count], 1 );
+            if (!map.containsKey(vector[index])) {
+                map.put(vector[index], 1 );
             }
-            else if (map.containsKey(vector[count])) {
-               tmp = map.get(vector[count]);
-               tmp++;
-               map.put(vector[count],tmp);
+            else  {
+               number = map.get(vector[index]);
+               number++;
+               map.put(vector[index],number);
             }
-            count++;
+            index++;
         }
-        Set entrys =  map.entrySet();
-
+        int printedNumber = 0;
+        for (Map.Entry entry: map.entrySet()) {
+            int value = (int) entry.getKey();
+            int numberValues = (int) entry.getValue();
+            for (int i = numberValues+printedNumber -1; i >= printedNumber; i--) {
+                vector[i] = value;
+            }
+            printedNumber = numberValues + printedNumber;
+        }
 
         return vector;
     }

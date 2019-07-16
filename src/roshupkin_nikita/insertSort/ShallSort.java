@@ -2,23 +2,27 @@ package roshupkin_nikita.insertSort;
 
 import java.util.Arrays;
 
-public class InsertSort {
+public class ShallSort {
         public static void main(String[] args) {
             int[] vector = {4,3,2,1,5,8,9,3,4,7,5,4};
             System.out.println(Arrays.toString(vector));
-            sortBubble(vector);
+            shallSortr(vector);
             System.out.println(Arrays.toString(vector));
         }
 
-        public static void sortBubble(int[] vector) {
-            int count =2;
-            for (int i = 1; i < vector.length; i++) {
-                for (int j = i; j > 0; j--) {
-                    if (vector[j - count] > vector[j]) {
-                        swap(vector, j - count, j);
+        public static void shallSortr(int[] vector) {
+
+            for (int i =vector.length/2; i > 0; i/=2) {
+              for (int k = i; k < vector.length; k++) {
+                 for (int j = k-i; j >=0; j= j-i) {
+                    if (vector[j+i] >= vector[j]) {
+                        break;
                     }
-                }
-                count++;
+                    else {
+                        swap(vector, j , j+ i);
+                    }
+                 }
+              }
             }
         }
 
