@@ -1,5 +1,8 @@
 package session8;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BST {
     TreeNode root;
     int size;
@@ -21,10 +24,6 @@ public class BST {
         }
     }
 
-    public boolean contains(int value) {
-        return false;
-    }
-
     public void print(TreeNode root) {
         if (root == null) {
             return;
@@ -42,7 +41,7 @@ public class BST {
         } else {
             TreeNode current = this.root;
             while (true) {
-                if (current != null && value > current.value ) {
+                if (current != null && value > current.value) {
                     if (current.right == null) {
                         current.right = newNode;
                         size++;
@@ -60,6 +59,73 @@ public class BST {
                 }
             }
         }
+    }
+
+    public boolean contains(int value) {
+        TreeNode current = root;
+        while (current != null) {
+            if (current.value == value) {
+                return true;
+            }
+            if (value > current.value) {
+                current = current.right;
+            } else {
+                current = current.left;
+            }
+        }
+        return false;
+    }
+
+    public void printByLevel(TreeNode root, int maxLevel) {
+        Queue<TreeNode> prev = new LinkedList<>();
+        Queue<TreeNode> next = new LinkedList<>();
+        Queue<TreeNode> tmp;
+        boolean isLevelNull = false;
+        int gap = (int) Math.pow(2, maxLevel);
+        prev.add(root);
+
+        while (maxLevel > 0 && !isLevelNull && !prev.isEmpty()) {
+            isLevelNull = true;
+            System.out.print(String.format("%" + gap + "s", " "));
+            while (!prev.isEmpty()) {
+                TreeNode node = prev.poll();
+                System.out.print(node == null ? "--" : node);
+                if (node != null && node.left != null) {
+                    next.add(node.left);
+                    isLevelNull = false;
+                } else {
+                    next.add(null);
+                }
+                System.out.print(String.format("%" + (gap * 2 - 2) + "s", " "));
+                if (node != null && node.right != null) {
+                    next.add(node.right);
+                    isLevelNull = false;
+                } else {
+                    next.add(null);
+                }
+            }
+            System.out.println();
+            gap /= 2;
+            maxLevel--;
+            tmp = prev;
+            prev = next;
+            next = tmp;
+        }
+    }
+
+    public static void main(String[] args) {
+        BST tree = new BST();
+        tree.insert(3);
+        tree.insert(5);
+        tree.insert(2);
+        tree.insert(6);
+        tree.insert(1);
+        tree.insert(0);
+
+        System.out.println("By Level");
+        tree.printByLevel(tree.root, 5);
+        System.out.println(tree.contains(55));
+
     }
 }
 

@@ -21,14 +21,16 @@ public class BSTTest {
         tree.insert(6);
         tree.insert(1);
         tree.insert(0);
-        tree.print(tree.root);
+        tree.printByLevel(tree.root, 5);
     }
 
     @Test
     public void testContainsSingle() {
         tree.insert(3);
+        tree.printByLevel(tree.root, 5);
         assertTrue(tree.contains(3));
         assertFalse(tree.contains(5));
         assertEquals(1, tree.size);
+
     }
 }
