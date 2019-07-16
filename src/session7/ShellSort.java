@@ -10,12 +10,14 @@ public class ShellSort {
     }
 
     public void insertionSort(int[] vector) {
-        for (int i = 0; i < vector.length; i++) {
-            for (int j = i; j >= 1; j--) {
-                if (vector[j] < vector[j - 1]) {
-                    int tmp = vector[j];
-                    vector[j] = vector[j - 1];
-                    vector[j - 1] = tmp;
+        for (int gap = vector.length/2; gap >= 1; gap /= 2) {
+            for (int i = 0; i < vector.length; i++) {
+                for (int j = i + gap; j > 0; j-=gap) {
+                    if (vector[j] < vector[j - gap]) {
+                        int tmp = vector[j];
+                        vector[j] = vector[j - gap];
+                        vector[j - gap] = tmp;
+                    }
                 }
             }
         }
