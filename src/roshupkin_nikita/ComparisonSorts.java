@@ -14,6 +14,9 @@ public class ComparisonSorts {
             vectorHun[i] = (int) (Math.random() * 100);
         }
         for (int i = 0; i < vectorThou.length; i++) {
+
+
+
             vectorThou[i] = (int) (Math.random() * 100);
         }
         for (int i = 0; i < vectorTenThou.length; i++) {
