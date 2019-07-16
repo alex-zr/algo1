@@ -1,4 +1,4 @@
-package src.sharov.session2.selectionsort;
+package sharov.session2.selectionsort;
 
 import java.util.Arrays;
 

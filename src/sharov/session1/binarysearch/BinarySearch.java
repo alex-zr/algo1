@@ -1,4 +1,4 @@
-package src.sharov.session1.binarysearch;
+package sharov.session1.binarysearch;
 
 public class BinarySearch {
   public int search(int element, int[] array) {

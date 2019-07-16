@@ -1,4 +1,4 @@
-package src.sharov.session2.insertsort;
+package sharov.session2.insertsort;
 
 import java.util.Arrays;
 

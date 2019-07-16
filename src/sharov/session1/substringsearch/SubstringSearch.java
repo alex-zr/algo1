@@ -1,4 +1,4 @@
-package src.sharov.session1.substringsearch;
+package sharov.session1.substringsearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
