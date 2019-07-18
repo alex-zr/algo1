@@ -76,6 +76,46 @@ public class BST {
         return false;
     }
 
+    public TreeNode delete(TreeNode root, int value) {
+        if (root == null)
+            return null;
+        if (root.value > value) {
+            root.left = delete(root.left, value);
+        } else if (root.value < value) {
+            root.right = delete(root.right, value);
+        } else {
+            // у узла оба потомков
+            if (root.left != null && root.right != null) {
+                TreeNode temp = root;
+                // находим минимальный элемент (самый левый) у правого потомка
+                TreeNode minNodeForRight = minimumElement(temp.right);
+                // заменяем текущий элемент минимальным элементом в правом поддереве
+                root.value = minNodeForRight.value;
+                // удаляем минимальный элемент из правого поддерева
+                delete(root.right, minNodeForRight.value);
+            }
+            // у узла только левый потомок
+            else if (root.left != null) {
+                root = root.left;
+            }
+            // у узла только правый потомок
+            else if (root.right != null) {
+                root = root.right;
+            }
+            // у узла нет потомков
+            else
+                root = null;
+        }
+        return root;
+    }
+
+    private TreeNode minimumElement(TreeNode node) {
+        if (node.left == null) {
+            return node;
+        }
+        return minimumElement(node.left);
+    }
+
     public void printByLevel(TreeNode root, int maxLevel) {
         Queue<TreeNode> prev = new LinkedList<>();
         Queue<TreeNode> next = new LinkedList<>();

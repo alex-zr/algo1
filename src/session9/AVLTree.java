@@ -1,6 +1,9 @@
 package session9;
 
 
+import session8.BST;
+
+import javax.swing.tree.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -123,6 +126,61 @@ public class AVLTree {
 
         /* return the (unchanged) node pointer */
         return node;
+    }
+
+    public Node delete(Node root, int value) {
+        if (root == null)
+            return null;
+        if (root.value > value) {
+            root.left = delete(root.left, value);
+        } else if (root.value < value) {
+            root.right = delete(root.right, value);
+        } else {
+            // у узла оба потомков
+            if (root.left != null && root.right != null) {
+                Node temp = root;
+                // находим минимальный элемент (самый левый) у правого потомка
+                Node minNodeForRight = minimumElement(temp.right);
+                // заменяем текущий элемент минимальным элементом в правом поддереве
+                root.value = minNodeForRight.value;
+                // удаляем минимальный элемент из правого поддерева
+                delete(root.right, minNodeForRight.value);
+            }
+            // у узла только левый потомок
+            else if (root.left != null) {
+                root = root.left;
+            }
+            // у узла только правый потомок
+            else if (root.right != null) {
+                root = root.right;
+            }
+            // у узла нет потомков
+            else
+                root = null;
+        }
+        return root;
+    }
+
+    private Node minimumElement(Node node) {
+        if (node.left == null) {
+            return node;
+        }
+        return minimumElement(node.left);
+    }
+
+    public boolean contains(int value) {
+        Node current = root;
+        while (current != null) {
+            if (current.value == value) {
+                return true;
+            }
+            if (value > current.value) {
+                current = current.right;
+            } else {
+                current = current.left;
+            }
+        }
+        return false;
     }
 
     public void printByLevel(Node root, int maxLevel) {
