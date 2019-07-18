@@ -1,4 +1,4 @@
-package src.sharov.session3;
+package sharov.session3;
 
 import java.util.Arrays;
 

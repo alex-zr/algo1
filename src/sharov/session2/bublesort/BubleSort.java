@@ -1,4 +1,4 @@
-package src.sharov.session2.bublesort;
+package sharov.session2.bublesort;
 
 import java.util.Arrays;
 
