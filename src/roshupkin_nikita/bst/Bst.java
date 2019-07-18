@@ -30,13 +30,15 @@ public class Bst {
             }
             TreeNode current = this.root;
             while (current != null) {
+                if (value == current.value) {
+                    return true;
+                }
                 if (value > current.value ) {
                     current = current.right;
                 }
                 if(value < current.value) {
                     current = current.left;
                 }
-                return true;
             }
             return false;
         }
