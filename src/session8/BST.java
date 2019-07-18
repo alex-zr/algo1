@@ -113,6 +113,26 @@ public class BST {
         }
     }
 
+    private String across(TreeNode node) {
+        StringBuilder sb = new StringBuilder();
+        Queue<TreeNode> queue = new LinkedList<>(); // создать новую очередь
+        queue.offer(node); // поместить в очередь первый уровень
+        while (queue.size() != 0) { // пока очередь не пуста
+            //если у текущей ветви есть листья, их тоже добавить в очередь
+            final TreeNode current = queue.peek();
+            if (current.left != null) {
+                queue.offer(current.left);
+            }
+            if (current.right != null) {
+                queue.offer(current.right);
+            }
+            //извлечь из очереди последний элемент
+            sb.append(current.value + " ");
+            queue.poll();
+        }
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
         BST tree = new BST();
         tree.insert(3);
@@ -125,7 +145,7 @@ public class BST {
         System.out.println("By Level");
         tree.printByLevel(tree.root, 5);
         System.out.println(tree.contains(55));
-
+        System.out.println(tree.across(tree.root));
     }
 }
 
