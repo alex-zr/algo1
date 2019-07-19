@@ -43,10 +43,9 @@ public class BSTTest {
         tree.insert(7);
         tree.print(tree.root);
         tree.printByLevel(tree.root, 5);
-        final BST.TreeNode delete = tree.delete(tree.root, 2);
+        final BST.TreeNode delete = tree.deleteRec(tree.root, 2);
         tree.print(delete);
         tree.printByLevel(delete, 5);
         assertFalse(tree.contains(5));
-        //assertEquals(1, tree.size);
     }
 }
