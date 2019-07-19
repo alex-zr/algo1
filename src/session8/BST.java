@@ -28,7 +28,7 @@ public class BST {
         if (root == null) {
             return;
         }
-        System.out.println(root.value);
+        System.out.print(root.value + " ");
         print(root.left);
         print(root.right);
     }
@@ -76,6 +76,53 @@ public class BST {
         return false;
     }
 
+    public TreeNode deleteRec(TreeNode node, int value) {
+        // Основной случай рекурсии, когда поддерево пустое
+        if (node == null) {
+            return node;
+        }
+
+        /* Otherwise, recur down the tree */
+        if (value < node.value) {
+            node.left = deleteRec(node.left, value);
+        } else if (value > node.value) {
+            node.right = deleteRec(node.right, value);
+            // Если у узла искомое значение, то удаляем этот узел
+        } else {
+            // у узла только правый потомок или нет потомков
+            if (node.left == null) {
+                return node.right;
+            // у узла только левый потомок или нет потомков
+            } else if (node.right == null) {
+                return node.left;
+            }
+
+            // заменяем значение текущего элемента минимальным элементом в правом поддереве
+            node.value = minValue(node.right);
+
+            // удаляем минимальный элемент из правого поддерева
+            node.right = deleteRec(node.right, node.value);
+        }
+
+        return node;
+    }
+
+    private int minimumValue(TreeNode node) {
+        if (node.left == null) {
+            return node.value;
+        }
+        return minimumValue(node.left);
+    }
+
+    int minValue(TreeNode root) {
+        int minv = root.value;
+        while (root.left != null) {
+            minv = root.left.value;
+            root = root.left;
+        }
+        return minv;
+    }
+
     public TreeNode delete(TreeNode root, int value) {
         if (root == null)
             return null;
@@ -86,20 +133,18 @@ public class BST {
         } else {
             // у узла оба потомков
             if (root.left != null && root.right != null) {
-                TreeNode temp = root;
                 // находим минимальный элемент (самый левый) у правого потомка
-                TreeNode minNodeForRight = minimumElement(temp.right);
                 // заменяем текущий элемент минимальным элементом в правом поддереве
-                root.value = minNodeForRight.value;
+                root.value = minimumValue(root.right);
                 // удаляем минимальный элемент из правого поддерева
-                delete(root.right, minNodeForRight.value);
+                delete(root.right, root.value);
             }
             // у узла только левый потомок
-            else if (root.left != null) {
+            else if (root.right == null) {
                 root = root.left;
             }
             // у узла только правый потомок
-            else if (root.right != null) {
+            else if (root.left == null) {
                 root = root.right;
             }
             // у узла нет потомков
@@ -109,12 +154,6 @@ public class BST {
         return root;
     }
 
-    private TreeNode minimumElement(TreeNode node) {
-        if (node.left == null) {
-            return node;
-        }
-        return minimumElement(node.left);
-    }
 
     public void printByLevel(TreeNode root, int maxLevel) {
         Queue<TreeNode> prev = new LinkedList<>();
@@ -183,8 +222,9 @@ public class BST {
         tree.insert(0);
 
         System.out.println("By Level");
-        tree.printByLevel(tree.root, 5);
-        System.out.println(tree.contains(55));
+        tree.printByLevel(tree.root, 6);
+        tree.deleteRec(tree.root, 3);
+        tree.printByLevel(tree.root, 6);
         System.out.println(tree.across(tree.root));
     }
 }

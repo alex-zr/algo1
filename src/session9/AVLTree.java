@@ -1,9 +1,6 @@
 package session9;
 
 
-import session8.BST;
-
-import javax.swing.tree.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -128,44 +125,41 @@ public class AVLTree {
         return node;
     }
 
-    public Node delete(Node root, int value) {
-        if (root == null)
-            return null;
-        if (root.value > value) {
-            root.left = delete(root.left, value);
-        } else if (root.value < value) {
-            root.right = delete(root.right, value);
-        } else {
-            // у узла оба потомков
-            if (root.left != null && root.right != null) {
-                Node temp = root;
-                // находим минимальный элемент (самый левый) у правого потомка
-                Node minNodeForRight = minimumElement(temp.right);
-                // заменяем текущий элемент минимальным элементом в правом поддереве
-                root.value = minNodeForRight.value;
-                // удаляем минимальный элемент из правого поддерева
-                delete(root.right, minNodeForRight.value);
-            }
-            // у узла только левый потомок
-            else if (root.left != null) {
-                root = root.left;
-            }
-            // у узла только правый потомок
-            else if (root.right != null) {
-                root = root.right;
-            }
-            // у узла нет потомков
-            else
-                root = null;
-        }
-        return root;
-    }
-
-    private Node minimumElement(Node node) {
-        if (node.left == null) {
+    public Node delete(Node node, int value) {
+        // Основной случай рекурсии, когда поддерево пустое
+        if (node == null) {
             return node;
         }
-        return minimumElement(node.left);
+
+        if (value < node.value) {
+            node.left = delete(node.left, value);
+        } else if (value > node.value) {
+            node.right = delete(node.right, value);
+            // Если у узла искомое значение, то удаляем этот узел
+        } else {
+            // у узла только правый потомок или нет потомков
+            if (node.left == null) {
+                return node.right;
+                // у узла только левый потомок или нет потомков
+            } else if (node.right == null) {
+                return node.left;
+            }
+
+            // заменяем значение текущего элемента минимальным элементом в правом поддереве
+            node.value = minimumValue(node.right);
+
+            // удаляем минимальный элемент из правого поддерева
+            node.right = delete(node.right, node.value);
+        }
+
+        return node;
+    }
+
+    private int minimumValue(Node node) {
+        if (node.left == null) {
+            return node.value;
+        }
+        return minimumValue(node.left);
     }
 
     public boolean contains(int value) {
