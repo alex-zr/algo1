@@ -76,62 +76,61 @@ public class BST {
         return false;
     }
 
-    public boolean delete(int id){
+    public boolean delete(int id) {
         TreeNode parent = root;
         TreeNode current = root;
         boolean isLeftChild = false;
-        while(current.value!=id){
+        while (current.value != id) {
             parent = current;
-            if(current.value>id){
+            if (current.value > id) {
                 isLeftChild = true;
                 current = current.left;
-            }else{
+            } else {
                 isLeftChild = false;
                 current = current.right;
             }
-            if(current ==null){
+            if (current == null) {
                 return false;
             }
         }
         //if i am here that means we have found the node
         //Case 1: if node to be deleted has no children
-        if(current.left==null && current.right==null){
-            if(current==root){
+        if (current.left == null && current.right == null) {
+            if (current == root) {
                 root = null;
             }
-            if(isLeftChild ==true){
+            if (isLeftChild == true) {
                 parent.left = null;
-            }else{
+            } else {
                 parent.right = null;
             }
         }
         //Case 2 : if node to be deleted has only one child
-        else if(current.right==null){
-            if(current==root){
+        else if (current.right == null) {
+            if (current == root) {
                 root = current.left;
-            }else if(isLeftChild){
+            } else if (isLeftChild) {
                 parent.left = current.left;
-            }else{
+            } else {
                 parent.right = current.left;
             }
-        }
-        else if(current.left==null){
-            if(current==root){
+        } else if (current.left == null) {
+            if (current == root) {
                 root = current.right;
-            }else if(isLeftChild){
+            } else if (isLeftChild) {
                 parent.left = current.right;
-            }else{
+            } else {
                 parent.right = current.right;
             }
-        }else if(current.left!=null && current.right!=null){
+        } else if (current.left != null && current.right != null) {
 
             //now we have found the minimum element in the right sub tree
-            TreeNode successor	 = getSuccessor(current);
-            if(current==root){
+            TreeNode successor = getSuccessor(current);
+            if (current == root) {
                 root = successor;
-            }else if(isLeftChild){
+            } else if (isLeftChild) {
                 parent.left = successor;
-            }else{
+            } else {
                 parent.right = successor;
             }
             successor.left = current.left;
@@ -139,11 +138,11 @@ public class BST {
         return true;
     }
 
-    public TreeNode getSuccessor(TreeNode deleleNode){
-        TreeNode successsor =null;
-        TreeNode successsorParent =null;
+    public TreeNode getSuccessor(TreeNode deleleNode) {
+        TreeNode successsor = null;
+        TreeNode successsorParent = null;
         TreeNode current = deleleNode.right;
-        while(current!=null){
+        while (current != null) {
             successsorParent = successsor;
             successsor = current;
             current = current.left;
@@ -151,7 +150,7 @@ public class BST {
         //check if successor has the right child, it cannot have left child for sure
         // if it does have the right child, add it to the left of successorParent.
 //		successsorParent
-        if(successsor!=deleleNode.right){
+        if (successsor != deleleNode.right) {
             successsorParent.left = successsor.right;
             successsor.right = deleleNode.right;
         }
@@ -173,7 +172,7 @@ public class BST {
             // у узла только правый потомок или нет потомков
             if (node.left == null) {
                 return node.right;
-            // у узла только левый потомок или нет потомков
+                // у узла только левый потомок или нет потомков
             } else if (node.right == null) {
                 return node.left;
             }
