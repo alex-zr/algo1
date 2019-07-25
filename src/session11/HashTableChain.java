@@ -28,7 +28,7 @@ public class HashTableChain<K, V> {
         if (buckets[bucketIdx] == null) {
             buckets[bucketIdx] = newNode;
         } else {
-            Node current = buckets[bucketIdx];
+            Node<K, V> current = buckets[bucketIdx];
             while(current.getNext() != null) {
                 if (current.equals(newNode)) {
                     return;
