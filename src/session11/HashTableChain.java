@@ -46,12 +46,11 @@ public class HashTableChain<K, V> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < buckets.length; i++) {
-            if (buckets[i] == null) {
+        for (Node<K, V> current : buckets) {
+            if (current == null) {
                 continue;
             }
-            Node current = buckets[i];
-            while(current != null) {
+            while (current != null) {
                 sb.append("[")
                         .append(current.getKey())
                         .append(":")
