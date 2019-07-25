@@ -33,7 +33,7 @@ public class BstMy {
         print(root.right);
     }
 
-    public void insertNewNode(TreeNode InsertNode, TreeNode CurrentNode) {
+    public void insertNewNode(int value, TreeNode CurrentNode) {
         TreeNode newNode = new TreeNode(value, null, null);
         if (this.root == null) {
             this.root = newNode;
