@@ -14,11 +14,13 @@ public class AVLTree {
             value = d;
             height = 1;
         }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
     }
+
     Node root;
 
     // A utility function to get the height of the tree
@@ -175,6 +177,15 @@ public class AVLTree {
             }
         }
         return false;
+    }
+
+    public int isAVL(Node n) {
+        if (n == null)
+            return 0;
+        int l = height(n.left);
+        int r = height(n.right);
+
+        return l - r;
     }
 
     public void printByLevel(Node root, int maxLevel) {
