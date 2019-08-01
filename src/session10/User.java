@@ -1,5 +1,7 @@
 package session10;
 
+import java.util.Random;
+
 public class User extends Object {
     private String login;
     private String pass;
@@ -47,10 +49,14 @@ public class User extends Object {
 
     @Override
     public int hashCode() {
+/*        int mul = 31;
+        int resHash = 1;
         int loginHash = this.login.hashCode();
         int passHash = this.pass.hashCode();
-        //long doub = Double.doubleToLongBits(1.1);
 
-        return (int) (loginHash + passHash);
+        resHash = resHash + loginHash;
+        resHash = resHash + passHash * 31;*/
+
+        return new Random(4).nextInt();
     }
 }

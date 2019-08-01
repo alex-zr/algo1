@@ -1,10 +1,5 @@
 package session11;
 
-import session10.User;
-
-import java.util.AbstractMap;
-import java.util.Map;
-
 public class HashTableChain<K, V> {
     private Node<K, V>[] buckets;
     private static final int INIT_SIZE = 16;
@@ -16,6 +11,18 @@ public class HashTableChain<K, V> {
     }
 
     public V get(K key) {
+        int keyHash = key.hashCode();
+        int bucketIdx = keyHash % buckets.length;
+
+        Node<K, V> current = buckets[bucketIdx];
+
+        while (current != null) {
+            if (current.getKey().equals(key)) {
+                return current.getValue();
+            }
+            current = current.getNext();
+        }
+
         return null;
     }
 
@@ -23,13 +30,13 @@ public class HashTableChain<K, V> {
         int keyHash = key.hashCode();
         int bucketIdx = keyHash % buckets.length;
 
-        final Node<K, V> newNode = new Node<K, V>(key, user, null);
+        final Node<K, V> newNode = new Node<>(key, user, null);
 
         if (buckets[bucketIdx] == null) {
             buckets[bucketIdx] = newNode;
         } else {
             Node<K, V> current = buckets[bucketIdx];
-            while(current.getNext() != null) {
+            while (current.getNext() != null) {
                 if (current.equals(newNode)) {
                     return;
                 }
